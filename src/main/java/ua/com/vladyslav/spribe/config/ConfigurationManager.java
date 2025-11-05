@@ -1,24 +1,24 @@
 package ua.com.vladyslav.spribe.config;
 
-import io.qameta.allure.Allure;
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.LoggerContext;
 import io.restassured.RestAssured;
 import io.restassured.config.LogConfig;
 import io.restassured.parsing.Parser;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.Map;
 import java.util.Properties;
 
 public class ConfigurationManager {
     private static final ConfigurationManager INSTANCE = new ConfigurationManager();
     private final Properties properties;
-    private final String env;
 
     private ConfigurationManager() {
         properties = new Properties();
-        env = System.getProperty("env", "dev");
+        String env = System.getProperty("env", "dev");
         String configFileName = "config/" + env + ".properties";
 
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(configFileName)) {
@@ -54,12 +54,20 @@ public class ConfigurationManager {
         RestAssured.defaultParser = Parser.JSON;
     }
 
-    public void attachAllureEnvironmentInfo() {
-        Allure.parameter("Environment", env);
-        Allure.parameter("Base URL", getProperty("api.base.url"));
+    public void applyLogLevel() {
+        String levelName = getLogLevel();
+        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 
-        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-            Allure.parameter(entry.getKey().toString(), entry.getValue().toString());
-        }
+        Level level = Level.toLevel(levelName, Level.INFO);
+        context.getLogger("ua.com.vladyslav.spribe").setLevel(level);
+        context.getLogger("io.restassured").setLevel(level);
+        context.getLogger("org.testng").setLevel(Level.WARN);
+
+        System.out.printf("[LOG CONFIG] Set log level to %s%n", level);
+    }
+
+    public String getLogLevel() {
+        String level = properties.getProperty("log.level", "INFO");
+        return level.trim().toUpperCase();
     }
 }

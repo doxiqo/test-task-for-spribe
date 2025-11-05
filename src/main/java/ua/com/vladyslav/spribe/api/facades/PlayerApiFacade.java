@@ -114,7 +114,7 @@ public class PlayerApiFacade {
     public void invalidDelete(Integer playerId, String editor) {
         apiService.deletePlayer(PlayerBuilder.build().id(playerId).buildRequest(), editor)
                 .then()
-                .statusCode(400)
+                .statusCode(403)
                 .body(emptyOrNullString());
     }
 
