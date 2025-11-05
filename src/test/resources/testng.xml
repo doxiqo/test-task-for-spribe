@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Backend API Test Suite"
+       parallel="methods"
+       thread-count="10"
+       verbose="2"
+       configfailurepolicy="continue">
+
+    <listeners>
+        <listener class-name="ua.com.vladyslav.spribe.listeners.TestResultListener"/>
+    </listeners>
+
+    <test name="Positive Players API Tests" parallel="methods" thread-count="5">
+        <groups>
+            <run>
+                <include name="positive"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="ua.com.vladyslav.spribe.players"/>
+        </packages>
+    </test>
+
+    <test name="Negative Players API Tests" parallel="methods" thread-count="5">
+        <groups>
+            <run>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="ua.com.vladyslav.spribe.players"/>
+            <package name="ua.com.vladyslav.spribe.players.negative"/>
+        </packages>
+    </test>
+</suite>
