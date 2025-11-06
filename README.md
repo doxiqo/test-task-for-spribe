@@ -1,6 +1,6 @@
 # Backend API Test Automation Framework — `test-task-for-spribe`
 
-**Author:** [Vladyslav S.](doxiqo@proton.me)
+**Author:** Vladyslav S. **Contact me:** doxiqo@proton.me
 
 **Purpose:** Demonstration of a professional backend API automation framework built in Java for a Senior AQA technical
 assignment.
@@ -152,8 +152,9 @@ Each test is isolated, repeatable, and safe for parallel execution.
 ## License
 
 This project is for demonstration and educational purposes only.  
-Use or modify freely for review or portfolio purposes.
 
 ---
 
-**Author:** [Vladyslav S.](doxiqo@proton.me)
+**Author:** Vladyslav S.
+
+**Contact me:** doxiqo@proton.me
