@@ -1,11 +1,10 @@
-package ua.com.vladyslav.spribe.players.negative;
+package ua.com.vladyslav.spribe.players;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import ua.com.vladyslav.spribe.enums.Roles;
 import ua.com.vladyslav.spribe.models.PlayerRequest;
 import ua.com.vladyslav.spribe.models.PlayerResponse;
-import ua.com.vladyslav.spribe.players.BasePlayerTest;
 
 import static ua.com.vladyslav.spribe.api.services.PlayerApiService.SUPERVISOR_ID;
 import static ua.com.vladyslav.spribe.api.services.PlayerApiService.SUPERVISOR_LOGIN;

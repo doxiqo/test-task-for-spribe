@@ -30,7 +30,6 @@
         </groups>
         <packages>
             <package name="ua.com.vladyslav.spribe.players"/>
-            <package name="ua.com.vladyslav.spribe.players.negative"/>
         </packages>
     </test>
 </suite>
