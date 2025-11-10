@@ -17,7 +17,7 @@ public class PlayerDataProviders {
     public static Object[][] invalidAgesForCreation() {
         return new Object[][]{
                 {16},
-                {61}
+                {60}
         };
     }
 
